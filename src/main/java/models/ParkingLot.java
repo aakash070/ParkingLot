@@ -1,9 +1,9 @@
 package models;
 
 
-import com.parking.exceptions.CarAlreadyParkedException;
-import com.parking.exceptions.CarNotParkedException;
-import com.parking.exceptions.ParkingFullException;
+import exceptions.CarAlreadyParkedException;
+import exceptions.CarNotParkedException;
+import exceptions.ParkingFullException;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

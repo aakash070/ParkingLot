@@ -1,10 +1,10 @@
 package tests;
 
-import com.parking.exceptions.CarAlreadyParkedException;
-import com.parking.exceptions.CarNotParkedException;
-import com.parking.exceptions.ParkingFullException;
-import com.parking.models.Car;
-import com.parking.models.ParkingLot;
+import exceptions.CarAlreadyParkedException;
+import exceptions.CarNotParkedException;
+import exceptions.ParkingFullException;
+import models.Car;
+import models.ParkingLot;
 import org.junit.Before;
 import org.junit.Test;
 
