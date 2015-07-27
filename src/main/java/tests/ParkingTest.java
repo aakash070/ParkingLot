@@ -9,15 +9,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class ParkingTest {
 
     ParkingLot parkingLot;
+    TestParkingLotOwner testParkingLotOwner;
 
     @Before
     public void setUp(){
-        parkingLot = new ParkingLot(5);
+
+        testParkingLotOwner = new TestParkingLotOwner();
+        parkingLot = new ParkingLot(5,testParkingLotOwner);
 
         parkingLot.park(new Car("1234", "maruti"));
         parkingLot.park(new Car("12345", "audi"));
@@ -32,7 +36,7 @@ public class ParkingTest {
         assertEquals(3, token);
     }
 
-    @Test(expected = ParkingFullException.class)
+   @Test(expected = ParkingFullException.class)
     public void TestParkingWhenFull(){
 
         parkingLot.park(new Car("45646", "honda"));
@@ -60,5 +64,15 @@ public class ParkingTest {
     @Test(expected = CarNotParkedException.class)
     public void TestExceptionForUnparkWhenCarNotInParking(){
         parkingLot.unPark(100);
+    }
+
+    @Test
+    public void TestOwnerNotifiedWhenPArkingFull(){
+        parkingLot.park(new Car("2657", "hyundai"));
+        parkingLot.park(new Car("157", "honda"));
+        parkingLot.park(new Car("1259", "hyundai"));
+
+        System.out.println(testParkingLotOwner.flag);
+        assertTrue(testParkingLotOwner.flag);
     }
 }
