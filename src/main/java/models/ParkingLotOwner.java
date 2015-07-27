@@ -3,7 +3,7 @@ package models;
 /**
  * Created by aakash on 7/27/2015.
  */
-public class ParkingLotOwner {
+public class ParkingLotOwner implements ParkingLotObserver{
 
     private int id;
 
@@ -19,7 +19,7 @@ public class ParkingLotOwner {
 
     }
 
-    public void onVacant() {
+   public void onVacant() {
 
     }
 }
