@@ -27,7 +27,7 @@ public class ParkingLot {
 
         if(parkingSpace.keySet().size() == CAPACITY) {
             parkingLotOwner.onFull();
-            throw new ParkingFullException("Parking full");
+           throw new ParkingFullException("Parking full");
         }
 
         parkingSpace.put(counter.get(), c);
@@ -40,7 +40,8 @@ public class ParkingLot {
         Car c = parkingSpace.remove(token);
         if(c==null)
             throw new CarNotParkedException();
-
+        if(parkingSpace.keySet().size() == CAPACITY-1)
+            parkingLotOwner.onVacant();
         return c;
     }
 }

@@ -67,12 +67,21 @@ public class ParkingTest {
     }
 
     @Test
-    public void TestOwnerNotifiedWhenPArkingFull(){
+    public void TestOwnerNotifiedWhenParkingFull(){
         parkingLot.park(new Car("2657", "hyundai"));
         parkingLot.park(new Car("157", "honda"));
         parkingLot.park(new Car("1259", "hyundai"));
 
-        System.out.println(testParkingLotOwner.flag);
-        assertTrue(testParkingLotOwner.flag);
+        System.out.println(testParkingLotOwner.isFull);
+        assertTrue(testParkingLotOwner.isFull);
+    }
+
+    @Test
+    public void TestOwnerNotifiedWhenParkingFirstVacatedFromFull(){
+        parkingLot.park(new Car("2657", "hyundai"));
+        parkingLot.park(new Car("157", "honda"));
+        parkingLot.unPark(4);
+
+        assertTrue(testParkingLotOwner.isVacant);
     }
 }

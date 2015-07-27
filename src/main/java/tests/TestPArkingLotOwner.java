@@ -7,7 +7,8 @@ import models.ParkingLotOwner;
  */
 public class TestParkingLotOwner extends ParkingLotOwner{
 
-    boolean flag = false;
+    boolean isFull = false;
+    boolean isVacant = true;
 
     public TestParkingLotOwner(){
         super();
@@ -15,6 +16,13 @@ public class TestParkingLotOwner extends ParkingLotOwner{
 
     @Override
     public void onFull() {
-        flag= true;
+        isFull = true;
+        isVacant = false;
+    }
+
+    @Override
+    public void onVacant() {
+        isVacant = true;
+        isFull = false;
     }
 }
