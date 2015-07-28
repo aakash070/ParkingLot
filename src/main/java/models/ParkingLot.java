@@ -3,14 +3,13 @@ package models;
 
 import exceptions.CarAlreadyParkedException;
 import exceptions.CarNotParkedException;
-import exceptions.ParkingFullException;
+import notifications.Notifications;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Stream;
 
 public class ParkingLot {
 
@@ -28,7 +27,7 @@ public class ParkingLot {
         return parkingLotObserverList;
     }
 
-    public void register(ParkingLotObserver parkingLotObserver) {
+    public void subscribe(ParkingLotObserver parkingLotObserver) {
         parkingLotObserverList.add(parkingLotObserver);
     }
     public int park(Car c){
@@ -37,7 +36,7 @@ public class ParkingLot {
 
         if(parkingSpace.keySet().size() == CAPACITY) {
             for(ParkingLotObserver p: parkingLotObserverList)
-                p.onFull();
+                p.onNotification(Notifications.FULL);
 //            throw new ParkingFullException("Parking full");
         }
 
@@ -53,7 +52,7 @@ public class ParkingLot {
             throw new CarNotParkedException();
         if(parkingSpace.keySet().size() == CAPACITY-1)
             for(ParkingLotObserver p: parkingLotObserverList)
-                p.onVacant();
+                p.onNotification(Notifications.VACANT);
         return c;
     }
 }

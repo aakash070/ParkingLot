@@ -4,14 +4,14 @@ import models.ParkingLotObserver;
 import notifications.Notifications;
 
 /**
- * Created by aakash on 7/27/2015.
+ * Created by aakash on 7/28/2015.
  */
-public class TestParkingLotOwner implements ParkingLotObserver {
+public class TestParkingLotObserver implements ParkingLotObserver {
 
     boolean isFull = false;
     boolean isVacant = true;
 
-    public TestParkingLotOwner(){
+    public TestParkingLotObserver(){
         super();
     }
 

@@ -1,5 +1,7 @@
 package models;
 
+import notifications.Notifications;
+
 /**
  * Created by aakash on 7/27/2015.
  */
@@ -15,6 +17,10 @@ public class ParkingLotOwner implements ParkingLotObserver{
         this.id = id;
     }
 
+    public void onNotification(Notifications notification) {
+
+    }
+
     public void onFull(){
 
     }
@@ -22,4 +28,6 @@ public class ParkingLotOwner implements ParkingLotObserver{
    public void onVacant() {
 
     }
+
+
 }

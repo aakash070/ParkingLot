@@ -4,9 +4,7 @@ import exceptions.CarAlreadyParkedException;
 import exceptions.CarNotParkedException;
 import exceptions.ParkingFullException;
 import models.Car;
-import models.FBIAgent;
 import models.ParkingLot;
-import models.ParkingLotObserver;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,8 +29,8 @@ public class ParkingTest {
         testFBIAgent1 = new TestFBIAgent();
         testFBIAgent2 = new TestFBIAgent();
 
-        parkingLot.register(testFBIAgent1);
-        parkingLot.register(testFBIAgent2);
+        parkingLot.subscribe(testFBIAgent1);
+        parkingLot.subscribe(testFBIAgent2);
 
         parkingLot.park(new Car("1234", "maruti"));
         parkingLot.park(new Car("12345", "audi"));
@@ -99,14 +97,14 @@ public class ParkingTest {
     @Test
     public void TestNotificationToOwnerAndMultipleFBIAgentsWhenParkingFull() {
 
-        TestParkingLotOwner testParkingLotOwner = new TestParkingLotOwner();
+        TestParkingLotObserver testParkingLotOwner = new TestParkingLotObserver();
         ParkingLot parkingLot = new ParkingLot(2,testParkingLotOwner);
 
-        TestFBIAgent testFBIAgent1  = new TestFBIAgent();
-        TestFBIAgent testFBIAgent2 = new TestFBIAgent();
+        TestParkingLotObserver testFBIAgent1  = new TestParkingLotObserver();
+        TestParkingLotObserver testFBIAgent2 = new TestParkingLotObserver();
 
-        parkingLot.register(testFBIAgent1);
-        parkingLot.register(testFBIAgent2);
+        parkingLot.subscribe(testFBIAgent1);
+        parkingLot.subscribe(testFBIAgent2);
 
         parkingLot.park(new Car("2657", "hyundai"));
         parkingLot.park(new Car("157", "honda"));
@@ -120,21 +118,20 @@ public class ParkingTest {
     @Test
     public void TestNotificationToOwnerAndMultipleFBIAgentsWhenParkingFirstVacatedFromFull() {
 
-        TestParkingLotOwner testParkingLotOwner = new TestParkingLotOwner();
-        ParkingLot parkingLot = new ParkingLot(2,testParkingLotOwner);
+        TestParkingLotObserver owner = new TestParkingLotObserver();
+        ParkingLot parkingLot = new ParkingLot(2,owner);
 
-        TestFBIAgent testFBIAgent1  = new TestFBIAgent();
-        TestFBIAgent testFBIAgent2 = new TestFBIAgent();
+        TestParkingLotObserver agent1 = new TestParkingLotObserver();
+        TestParkingLotObserver agent2 = new TestParkingLotObserver();
 
-        parkingLot.register(testFBIAgent1);
-        parkingLot.register(testFBIAgent2);
+        parkingLot.subscribe(agent1);
+        parkingLot.subscribe(agent2);
 
         parkingLot.park(new Car("2657", "hyundai"));
         parkingLot.park(new Car("157", "honda"));
         parkingLot.unPark(1);
 
-        assertTrue(testParkingLotOwner.isVacant);
-        assertTrue(testFBIAgent1.isVacant);
-        assertTrue(testFBIAgent2.isVacant);
+        assertTrue(agent1.isVacant);
+        assertTrue(agent2.isVacant);
     }
 }
