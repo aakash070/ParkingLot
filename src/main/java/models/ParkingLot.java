@@ -89,4 +89,12 @@ public class ParkingLot {
             return true;
         return false;
     }
+
+    public int getVacantSpaces() {
+        return (this.CAPACITY - this.parkingSpace.size());
+    }
+
+    public int getCAPACITY() {
+        return CAPACITY;
+    }
 }

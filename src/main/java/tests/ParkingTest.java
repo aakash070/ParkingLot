@@ -182,6 +182,31 @@ public class ParkingTest {
 
        parkingAttendent.unPark(t);
 
-       assertEquals(new Token(parkingLot,3),t);
+       assertEquals(new Token(parkingLot, 3), t);
     }
+
+    @Test
+    public void TestParkUsingParkingAttendentInParkingLotWithMaximumVacancy() {
+        ParkingLot parkingLot1 = new ParkingLot(3,testParkingLotOwner);
+
+        parkingAttendent.attendToLot(parkingLot);
+        parkingAttendent.attendToLot(parkingLot1);
+
+        Token t = parkingAttendent.parkInMaxVacancy(new Car("21332","hyundai"));
+
+        assertEquals(new Token(parkingLot1, 0), t);
+    }
+
+    @Test
+    public void TestParkUsingParkingAttendentInParkingLotWithMaximumCapacity() {
+        ParkingLot parkingLot1 = new ParkingLot(3,testParkingLotOwner);
+
+        parkingAttendent.attendToLot(parkingLot);
+        parkingAttendent.attendToLot(parkingLot1);
+
+        Token t = parkingAttendent.parkInMaxCapacity(new Car("21332","hyundai"));
+
+        assertEquals(new Token(parkingLot, 3), t);
+    }
+
 }
