@@ -84,4 +84,10 @@ public class ParkingLot {
 
         return c;
     }
+
+    public boolean hasVacantSpace() {
+        if(parkingSpace.size()<CAPACITY-1)
+            return true;
+        return false;
+    }
 }

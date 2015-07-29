@@ -15,7 +15,7 @@ public class TestFBIAgent implements ParkingLotObserver {
     }
 
     public void onNotification(Events notification) {
-        if(notification.getEventCode()==2)
+        if(notification.getEventCode()==3)
            isEightyPercentFull = true;
     }
 

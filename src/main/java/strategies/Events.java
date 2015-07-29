@@ -9,8 +9,8 @@ public enum Events {
 
     private int eventCode;
 
-    Events(int notificationCode) {
-       this.eventCode = notificationCode;
+    Events(int eventCode) {
+       this.eventCode = eventCode;
     }
 
     public int getEventCode(){
