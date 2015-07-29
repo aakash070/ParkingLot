@@ -1,34 +1,22 @@
 package tests;
 
 import models.ParkingLotObserver;
-import notifications.Notifications;
+import strategies.SubscriptionStrategy;
+import strategies.Events;
 
 /**
  * Created by aakash on 7/27/2015.
  */
 public class TestFBIAgent implements ParkingLotObserver {
-    boolean isFull = false;
-    boolean isVacant = true;
+    boolean isEightyPercentFull = false;
 
     public TestFBIAgent(){
         super();
     }
 
-    public void onFull() {
-        isFull = true;
-        isVacant = false;
-    }
-
-    public void onVacant() {
-        isVacant = true;
-        isFull = false;
-    }
-
-    public void onNotification(Notifications notification) {
-        if(notification.getNotificationCode()==1)
-            onFull();
-        else
-            onVacant();
+    public void onNotification(Events notification) {
+        if(notification.getEventCode()==2)
+           isEightyPercentFull = true;
     }
 
 }

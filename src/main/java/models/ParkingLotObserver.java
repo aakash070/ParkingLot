@@ -1,12 +1,12 @@
 package models;
 
-import notifications.Notifications;
+import strategies.Events;
 
 /**
  * Created by aakash on 7/27/2015.
  */
 public interface ParkingLotObserver {
 
-    public void onNotification(Notifications notification);
+    public void onNotification(Events notification);
 
 }

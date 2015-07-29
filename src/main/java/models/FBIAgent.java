@@ -1,13 +1,14 @@
 package models;
 
-import notifications.Notifications;
+import strategies.Events;
+import strategies.SubscriptionStrategy;
 
 /**
  * Created by aakash on 7/27/2015.
  */
 public class FBIAgent implements ParkingLotObserver{
 
-    public void onNotification(Notifications notification) {
+    public void onNotification(Events notification) {
 
     }
 
@@ -19,4 +20,7 @@ public class FBIAgent implements ParkingLotObserver{
 
     }
 
+    public boolean apply(int parkedCars, int capacity) {
+        return false;
+    }
 }

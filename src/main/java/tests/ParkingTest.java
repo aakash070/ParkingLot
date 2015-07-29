@@ -7,6 +7,8 @@ import models.Car;
 import models.ParkingLot;
 import org.junit.Before;
 import org.junit.Test;
+import strategies.SubscriptionStrategy1;
+import strategies.SubscriptionStrategy2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -29,8 +31,8 @@ public class ParkingTest {
         testFBIAgent1 = new TestFBIAgent();
         testFBIAgent2 = new TestFBIAgent();
 
-        parkingLot.subscribe(testFBIAgent1);
-        parkingLot.subscribe(testFBIAgent2);
+        parkingLot.subscribe(testFBIAgent1,new SubscriptionStrategy2());
+        parkingLot.subscribe(testFBIAgent2,new SubscriptionStrategy2());
 
         parkingLot.park(new Car("1234", "maruti"));
         parkingLot.park(new Car("12345", "audi"));
@@ -103,8 +105,8 @@ public class ParkingTest {
         TestParkingLotObserver testFBIAgent1  = new TestParkingLotObserver();
         TestParkingLotObserver testFBIAgent2 = new TestParkingLotObserver();
 
-        parkingLot.subscribe(testFBIAgent1);
-        parkingLot.subscribe(testFBIAgent2);
+        parkingLot.subscribe(testFBIAgent1,new SubscriptionStrategy1());
+        parkingLot.subscribe(testFBIAgent2,new SubscriptionStrategy1());
 
         parkingLot.park(new Car("2657", "hyundai"));
         parkingLot.park(new Car("157", "honda"));
@@ -124,8 +126,8 @@ public class ParkingTest {
         TestParkingLotObserver agent1 = new TestParkingLotObserver();
         TestParkingLotObserver agent2 = new TestParkingLotObserver();
 
-        parkingLot.subscribe(agent1);
-        parkingLot.subscribe(agent2);
+        parkingLot.subscribe(agent1,new SubscriptionStrategy1());
+        parkingLot.subscribe(agent2,new SubscriptionStrategy1());
 
         parkingLot.park(new Car("2657", "hyundai"));
         parkingLot.park(new Car("157", "honda"));

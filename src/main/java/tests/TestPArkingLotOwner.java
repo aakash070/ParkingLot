@@ -1,7 +1,8 @@
 package tests;
 
 import models.ParkingLotObserver;
-import notifications.Notifications;
+import strategies.SubscriptionStrategy;
+import strategies.Events;
 
 /**
  * Created by aakash on 7/27/2015.
@@ -25,10 +26,12 @@ public class TestParkingLotOwner implements ParkingLotObserver {
         isFull = false;
     }
 
-    public void onNotification(Notifications notification) {
-        if(notification.getNotificationCode()==1)
+    public void onNotification(Events notification) {
+        if(notification.getEventCode()==1)
             onFull();
         else
             onVacant();
     }
+
+
 }

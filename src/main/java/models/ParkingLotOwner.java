@@ -1,11 +1,12 @@
 package models;
 
-import notifications.Notifications;
+import strategies.Events;
+import strategies.SubscriptionStrategy;
 
 /**
  * Created by aakash on 7/27/2015.
  */
-public class ParkingLotOwner implements ParkingLotObserver{
+public class ParkingLotOwner implements ParkingLotObserver {
 
     private int id;
 
@@ -17,7 +18,7 @@ public class ParkingLotOwner implements ParkingLotObserver{
         this.id = id;
     }
 
-    public void onNotification(Notifications notification) {
+    public void onNotification(Events notification) {
 
     }
 

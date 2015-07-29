@@ -3,56 +3,85 @@ package models;
 
 import exceptions.CarAlreadyParkedException;
 import exceptions.CarNotParkedException;
-import notifications.Notifications;
+import strategies.Events;
+import strategies.SubscriptionStrategy;
+import strategies.SubscriptionStrategy1;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ParkingLot {
 
-   private  List<ParkingLotObserver> parkingLotObserverList = new ArrayList<ParkingLotObserver>();
+    private Map<ParkingLotObserver, SubscriptionStrategy> parkingLotObservers = new HashMap<ParkingLotObserver, SubscriptionStrategy>();
     private AtomicInteger counter = new AtomicInteger(0);
     private int CAPACITY = 2;
     private Map<Integer, Car> parkingSpace = new ConcurrentHashMap<Integer, Car>();
 
     public ParkingLot(int capacity, ParkingLotObserver parkingLotOwner){
-        parkingLotObserverList.add(parkingLotOwner);
+        parkingLotObservers.put(parkingLotOwner, new SubscriptionStrategy1());
         this.CAPACITY = capacity;
     }
 
-    public List<ParkingLotObserver> getParkingLotObserverList() {
-        return parkingLotObserverList;
-    }
 
-    public void subscribe(ParkingLotObserver parkingLotObserver) {
-        parkingLotObserverList.add(parkingLotObserver);
+    public void subscribe(ParkingLotObserver parkingLotObserver, SubscriptionStrategy strategy) {
+        parkingLotObservers.put(parkingLotObserver,strategy);
     }
     public int park(Car c){
         if(parkingSpace.containsValue(c))
             throw new CarAlreadyParkedException("Car already Parked");
 
-        if(parkingSpace.keySet().size() == CAPACITY) {
-            for(ParkingLotObserver p: parkingLotObserverList)
-                p.onNotification(Notifications.FULL);
+        if(parkingSpace.keySet().size() < CAPACITY) {
+            parkingSpace.put(counter.get(), c);
+            counter.getAndIncrement();
+        }
+
+        if(checkForEvent(parkingSpace.size())) {
+            for(ParkingLotObserver p: parkingLotObservers.keySet()) {
+                Events e = getEvent(parkingSpace.size());
+                if(parkingLotObservers.get(p).apply(e))
+                    p.onNotification(e);
+            }
 //            throw new ParkingFullException("Parking full");
         }
 
-        parkingSpace.put(counter.get(), c);
-        return counter.getAndIncrement();
+        return counter.get();
     }
 
+    private boolean checkForEvent(int parkedCars) {
+        if(parkedCars == CAPACITY || parkedCars == CAPACITY-1 ||
+                (double)parkedCars == (double)CAPACITY*(double)0.8)
+            return true;
+        return false;
+    }
+
+    private Events getEvent(int parkedCars) {
+        if(parkedCars == CAPACITY)
+            return Events.FULL;
+        else if(parkedCars == CAPACITY-1)
+            return Events.VACANT;
+        else
+            return Events.EIGHTY;
+    }
 
     public Car unPark(int token) {
 
         Car c = parkingSpace.remove(token);
         if(c==null)
             throw new CarNotParkedException();
-        if(parkingSpace.keySet().size() == CAPACITY-1)
-            for(ParkingLotObserver p: parkingLotObserverList)
-                p.onNotification(Notifications.VACANT);
+/*        if(parkingSpace.keySet().size() == CAPACITY-1) {
+            for(ParkingLotObserver p: parkingLotObservers)
+                p.onNotification(Events.VACANT);}*/
+        if(checkForEvent(parkingSpace.size())) {
+            for(ParkingLotObserver p: parkingLotObservers.keySet()) {
+                Events e = getEvent(parkingSpace.size());
+                if(parkingLotObservers.get(p).apply(e))
+                    p.onNotification(e);
+            }
+//            throw new ParkingFullException("Parking full");
+        }
+
         return c;
     }
 }
