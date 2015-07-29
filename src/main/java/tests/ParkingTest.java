@@ -179,6 +179,9 @@ public class ParkingTest {
         parkingAttendent.attendToLot(parkingLot1);
 
        Token t = parkingAttendent.park(new Car("21332","hyundai"));
-       assertEquals(new Token(0,0),t);
+
+       parkingAttendent.unPark(t);
+
+       assertEquals(new Token(0,3),t);
     }
 }

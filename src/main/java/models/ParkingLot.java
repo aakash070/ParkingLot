@@ -34,7 +34,6 @@ public class ParkingLot {
 
         if(parkingSpace.keySet().size() < CAPACITY) {
             parkingSpace.put(counter.get(), c);
-            counter.getAndIncrement();
         }
 
         if(checkForEvent(parkingSpace.size())) {
@@ -46,7 +45,7 @@ public class ParkingLot {
 //            throw new ParkingFullException("Parking full");
         }
 
-        return counter.get();
+        return counter.getAndIncrement();
     }
 
     private boolean checkForEvent(int parkedCars) {

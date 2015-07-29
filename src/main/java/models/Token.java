@@ -19,4 +19,29 @@ public class Token {
     public int getParkingSpaceID() {
         return parkingSpaceID;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Token token = (Token) o;
+
+        if (parkingLotID != token.parkingLotID) return false;
+        return parkingSpaceID == token.parkingSpaceID;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = parkingLotID;
+        result = 31 * result + parkingSpaceID;
+        return result;
+    }
+
+
+    /*@Override
+    public boolean equals(Object obj) {
+        return this.parkingLotID==(Token)obj.getParkingLotID();
+    }*/
 }
