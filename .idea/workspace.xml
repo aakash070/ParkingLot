@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c757a598-cddb-4931-b767-57ee24e15698" name="Default" comment="">
       <change type="DELETED" beforePath="F:\Parking Lot\target\classes\notifications\Notifications.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/models/Token.class" afterPath="$PROJECT_DIR$/target/classes/models/Token.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/ParkingLot.java" afterPath="$PROJECT_DIR$/src/main/java/models/ParkingLot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/ParkingAttendent.java" afterPath="$PROJECT_DIR$/src/main/java/models/ParkingAttendent.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tests/ParkingTest.java" afterPath="$PROJECT_DIR$/src/main/java/tests/ParkingTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/Token.java" afterPath="$PROJECT_DIR$/src/main/java/models/Token.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -34,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/models/ParkingLot.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="40" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
+              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -46,10 +45,10 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
               <folding>
-                <element signature="e#329#330#0" expanded="true" />
-                <element signature="e#364#365#0" expanded="true" />
-                <element signature="e#402#403#0" expanded="true" />
-                <element signature="e#439#440#0" expanded="true" />
+                <element signature="e#340#341#0" expanded="true" />
+                <element signature="e#373#374#0" expanded="true" />
+                <element signature="e#411#412#0" expanded="true" />
+                <element signature="e#448#449#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -69,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/models/ParkingAttendent.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+              <caret line="27" column="53" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#333#345#0" expanded="true" />
@@ -119,8 +118,8 @@
       <file leaf-file-name="ParkingTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/tests/ParkingTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71356785">
-              <caret line="170" column="54" selection-start-line="170" selection-start-column="54" selection-end-line="170" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.23115578">
+              <caret line="174" column="28" selection-start-line="174" selection-start-column="28" selection-end-line="174" selection-end-column="28" />
               <folding>
                 <element signature="method#TestParkingWhenSpaceAvailable#0;class#ParkingTest#0" expanded="false" />
                 <element signature="method#TestParkingWhenFull#0;class#ParkingTest#0" expanded="false" />
@@ -205,11 +204,11 @@
         <option value="$PROJECT_DIR$/src/main/java/strategies/Events.java" />
         <option value="$PROJECT_DIR$/src/main/java/exceptions/NoVacantParkingSpaceException.java" />
         <option value="$PROJECT_DIR$/src/main/java/exceptions/InvalidTokenException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/ParkingAttendent.java" />
         <option value="$PROJECT_DIR$/src/main/java/tests/TestFBIAgent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/Token.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/ParkingLot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/Token.java" />
         <option value="$PROJECT_DIR$/src/main/java/tests/ParkingTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/ParkingAttendent.java" />
       </list>
     </option>
   </component>
@@ -1066,10 +1065,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
           <folding>
-            <element signature="e#329#330#0" expanded="true" />
-            <element signature="e#364#365#0" expanded="true" />
-            <element signature="e#402#403#0" expanded="true" />
-            <element signature="e#439#440#0" expanded="true" />
+            <element signature="e#340#341#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1077,7 +1076,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/models/ParkingLot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="40" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1085,7 +1084,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/models/ParkingAttendent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <caret line="27" column="53" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#333#345#0" expanded="true" />
@@ -1097,8 +1096,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tests/ParkingTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71356785">
-          <caret line="170" column="54" selection-start-line="170" selection-start-column="54" selection-end-line="170" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.23115578">
+          <caret line="174" column="28" selection-start-line="174" selection-start-column="28" selection-end-line="174" selection-end-column="28" />
           <folding>
             <element signature="method#TestParkingWhenSpaceAvailable#0;class#ParkingTest#0" expanded="false" />
             <element signature="method#TestParkingWhenFull#0;class#ParkingTest#0" expanded="false" />

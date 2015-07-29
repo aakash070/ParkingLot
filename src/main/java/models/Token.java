@@ -4,16 +4,16 @@ package models;
  * Created by aakash on 7/29/2015.
  */
 public class Token {
-    private int parkingLotID;
+    private ParkingLot parkingLot;
     private int parkingSpaceID;
 
-    public Token(int parkingLotID, int parkingSpaceID) {
-        this.parkingLotID = parkingLotID;
+    public Token(ParkingLot parkingLot, int parkingSpaceID) {
+        this.parkingLot = parkingLot;
         this.parkingSpaceID = parkingSpaceID;
     }
 
-    public int getParkingLotID() {
-        return parkingLotID;
+    public ParkingLot getParkingLot() {
+        return parkingLot;
     }
 
     public int getParkingSpaceID() {
@@ -27,21 +27,15 @@ public class Token {
 
         Token token = (Token) o;
 
-        if (parkingLotID != token.parkingLotID) return false;
-        return parkingSpaceID == token.parkingSpaceID;
+        if (parkingSpaceID != token.parkingSpaceID) return false;
+        return !(parkingLot != null ? !parkingLot.equals(token.parkingLot) : token.parkingLot != null);
 
     }
 
     @Override
     public int hashCode() {
-        int result = parkingLotID;
+        int result = parkingLot != null ? parkingLot.hashCode() : 0;
         result = 31 * result + parkingSpaceID;
         return result;
     }
-
-
-    /*@Override
-    public boolean equals(Object obj) {
-        return this.parkingLotID==(Token)obj.getParkingLotID();
-    }*/
 }

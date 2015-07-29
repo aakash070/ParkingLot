@@ -19,27 +19,22 @@ public class ParkingAttendent {
     }
 
     public Token park(Car c) {
-        int pLotNo = 0;
-        Token token;
-        for(ParkingLot p : parkingLots) {
-            if(p.hasVacantSpace()) {
-                token = new Token(pLotNo,p.park(c));
-                return token;
-            }
-            pLotNo++;
-        }
-        throw new NoVacantParkingSpaceException("No Vacant Space Available");
+        ParkingLot parkingLot = getParkingLotWithNoAddedFunctionality();
+        Token token = new Token(parkingLot,parkingLot.park(c));
+        return token;
     }
 
     public void unPark(Token token) {
-        int pLotNo = 0;
-        for(ParkingLot parkingLot : parkingLots) {
-            if (pLotNo == token.getParkingLotID()){
-                parkingLot.unPark(token.getParkingSpaceID());
-                return;
+        ParkingLot parkingLot = token.getParkingLot();
+        parkingLot.unPark(token.getParkingSpaceID());
+    }
+
+    public ParkingLot getParkingLotWithNoAddedFunctionality() {
+        for(ParkingLot p : parkingLots) {
+            if(p.hasVacantSpace()) {
+                return p;
             }
-            pLotNo++;
         }
-        throw new InvalidTokenException("Invalid Token Provided");
+        throw new NoVacantParkingSpaceException("No Vacant Space Available");
     }
 }

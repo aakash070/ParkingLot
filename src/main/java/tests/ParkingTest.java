@@ -182,6 +182,6 @@ public class ParkingTest {
 
        parkingAttendent.unPark(t);
 
-       assertEquals(new Token(0,3),t);
+       assertEquals(new Token(parkingLot,3),t);
     }
 }
